@@ -2,8 +2,9 @@ language: node_js
 node_js:
   - "6"
 install:
-  - npm install -g yarn mocha istanbul snazzy standard codecov
+  - npm install -g yarn
+  - yarn global mocha istanbul snazzy standard codecov
   - yarn
 script:
-  - npm test
+  -yarn test
   
