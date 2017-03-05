@@ -6,5 +6,5 @@ install:
   - yarn global add mocha istanbul snazzy standard codecov
   - yarn
 script:
-  -yarn test
+  - yarn test
   
