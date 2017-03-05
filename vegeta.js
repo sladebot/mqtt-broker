@@ -1,5 +1,5 @@
-"use strict";
+'use strict'
 
-export default function Vegeta() {
-  
+export default function Vegeta () {
+
 }
