@@ -3,7 +3,7 @@ node_js:
   - "6"
 install:
   - npm install -g yarn
-  - yarn global mocha istanbul snazzy standard codecov
+  - yarn global add mocha istanbul snazzy standard codecov
   - yarn
 script:
   -yarn test
