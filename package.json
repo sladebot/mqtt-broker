@@ -1,0 +1,54 @@
+{
+  "name": "vegeta",
+  "description": "A MQTT Broker-Subscriber for IoT cluster",
+  "version": "0.0.1",
+  "contributors": [
+    "Souranil Sen <souranil.sen@stonybrook.edu>",
+    "Abhinandan Dubey <abhinandan.dubey@stonybrook.edu>"
+  ],
+  "keywords": [
+    "mqtt",
+    "publish/subscribe",
+    "iot"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sladebot/vegeta.git"
+  },
+  "main": "mqtt.js",
+  "scripts": {
+    "test": "node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --bail",
+    "ci": "npm run test && codecov"
+  },
+  "files": [
+    "dist/",
+    "doc",
+    "lib",
+    "bin",
+    "test",
+    "vegeta.js"
+  ],
+  "engines": {
+    "node": ">=6.3.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "codecov": "^1.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "should": "*",
+    "sinon": "~1.17.7",
+    "standard": "^8.6.0",
+    "uglify": "^0.1.5",
+    "uglify-js": "^2.7.5",
+    "zuul": "^3.11.1",
+    "zuul-ngrok": "^4.0.0"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}
