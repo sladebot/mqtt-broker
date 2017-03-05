@@ -18,7 +18,7 @@
   },
   "main": "mqtt.js",
   "scripts": {
-    "test": "node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --bail",
+    "test": "node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --bail --compilers js:babel-core/register",
     "ci": "npm run test && codecov"
   },
   "files": [
@@ -33,8 +33,13 @@
     "node": ">=6.3.0"
   },
   "dependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-node6": "^11.0.0",
+    "mqtt": "^2.4.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
     "codecov": "^1.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
