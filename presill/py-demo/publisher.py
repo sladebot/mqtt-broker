@@ -11,11 +11,13 @@ MQTT_MSG = "Hello MQTT"
 
 # Define on_connect event Handler
 def on_connect(mosq, obj, rc):
-	print "Connected to MQTT Broker"
+    print "Connected to MQTT Broker"
+
 
 # Define on_publish event Handler
 def on_publish(client, userdata, mid):
-	print "Message Published..."
+    print "Message Published..."
+
 
 # Initiate MQTT Client
 mqttc = mqtt.Client()
@@ -28,7 +30,7 @@ mqttc.on_connect = on_connect
 mqttc.connect(MQTT_HOST, MQTT_PORT, MQTT_KEEPALIVE_INTERVAL)
 
 # Publish message to MQTT Topic
-mqttc.publish(MQTT_TOPIC,MQTT_MSG)
+mqttc.publish(MQTT_TOPIC, MQTT_MSG)
 
 # Disconnect from MQTT_Broker
 mqttc.disconnect()
