@@ -19,7 +19,10 @@ ADD . /app
 
 WORKDIR /app
 
-RUN gulp
+RUN ls
+RUN ls node_modules
+
+RUN node_modules/gulp/bin/gulp.js
 
 EXPOSE 1337
 

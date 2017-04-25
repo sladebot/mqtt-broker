@@ -1,8 +1,8 @@
 const config = {
   redis: {
-    host: 'localhost',
+    host: process.env.REDIS_MASTER_SERVICE_HOST || 'localhost',
     port: 6379
   }
 }
 
-export default config
+export { config }
