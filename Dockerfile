@@ -15,11 +15,11 @@ RUN apt-get update \
 	&& apt-get install -y build-essential
 
 RUN npm install && npm install -g gulp
-ADD . /vegeta
+ADD . /app
 
-WORKDIR /vegeta
+WORKDIR /app
 
-RUN node_modules/.bin/gulp
+RUN gulp
 
 EXPOSE 1337
 
