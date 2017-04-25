@@ -9,18 +9,19 @@ ENV LC_ALL en_US.UTF-8
 RUN     \
 	apt-get -y -qq install python
 
-EXPOSE 1337
 
 RUN apt-get update \
 	&& apt-get install -y wget make g++ ruby-full \
 	&& apt-get install -y build-essential
 
-ADD package.json /src/package.json
-RUN cd /src && yarn
+RUN npm install && npm install -g gulp
+ADD . /vegeta
 
-RUN apt-get install -y ruby ruby-dev
-ADD . /src
-# Set working directory
-WORKDIR	/src
+WORKDIR /vegeta
 
-CMD ["node server.js"]
+RUN node_modules/.bin/gulp
+
+EXPOSE 1337
+
+ENTRYPOINT ["bash", "-c"]
+CMD ["node dist/vegeta.js"]

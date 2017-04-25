@@ -18,7 +18,7 @@
   },
   "main": "mqtt.js",
   "scripts": {
-    "start": "./node_modules/.bin/gulp && node dist/vegeta.js",
+    "start": "rm -rf dist/ && ./node_modules/.bin/gulp && node dist/vegeta.js",
     "test": "node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --bail --compilers js:babel-core/register",
     "pretest": "standard | snazzy",
     "ci": "npm run test && codecov"
@@ -29,7 +29,7 @@
     "lib",
     "bin",
     "test",
-    "vegeta.js"
+    "dist/vegeta.js"
   ],
   "engines": {
     "node": ">=6.3.0"
@@ -37,11 +37,12 @@
   "dependencies": {
     "authorizer": "^0.0.2",
     "babel-cli": "^6.24.0",
-    "global": "^4.3.1",
+    "global": "^4.3.2",
     "gulp": "^3.9.1",
     "gulp-ignore": "^2.0.2",
     "mosca": "^2.3.0",
     "mqtt": "^2.4.0",
+    "node-gyp": "^3.6.0",
     "redis": "^2.7.1",
     "snazzy": "^6.0.0"
   },

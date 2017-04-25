@@ -1,14 +1,14 @@
 'use strict'
 // import * as Mqtt from 'mqtt'
 import Server from './bin/server'
+import * as Config from './config'
 import * as redis from 'redis'
 
 const ascoltatore = {
   type: 'redis',
   redis: redis,
-  db: 12,
-  port: 6379,
-  host: process.env.REDIS_HOST || 'localhost'
+  port: process.env.DB_PORT_6379_TCP_PORT || Config.redis.port,
+  host: process.env.DB_PORT_6379_TCP_ADDR || Config.redis.host
 }
 
 const settings = {
