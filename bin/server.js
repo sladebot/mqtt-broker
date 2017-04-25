@@ -2,7 +2,6 @@
 
 import * as mosca from 'mosca'
 
-
 export default class Server {
   constructor (settings) {
     let done = () => {}
