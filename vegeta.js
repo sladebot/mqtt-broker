@@ -10,8 +10,8 @@ console.log(config)
 const ascoltatore = {
   type: 'redis',
   redis: redis,
-  port: process.env.DB_PORT_6379_TCP_PORT || config.redis.port,
-  host: process.env.DB_PORT_6379_TCP_ADDR || config.redis.host
+  port: config.redis.port,
+  host: config.redis.host
 }
 
 const settings = {
