@@ -24,7 +24,8 @@ const vegeta = server.getBroker()
 
 vegeta.on('published', (packet, client) => {
   if (packet.topic.indexOf('$SYS') === 0) return
-  console.log('ON PUBLISHED ', packet.payload.toString(), 'on topic', packet.topic)
+  debugger;
+  console.log('Client -   ', client.id.toString(), ' Payload - ' , packet.payload.toString(), 'on topic', packet.topic)
 })
 
 vegeta.on('ready', () => {
