@@ -1,5 +1,5 @@
 'use strict'
-// import * as Mqtt from 'mqtt'
+import * as mosca from 'mosca'
 import Server from './bin/server'
 import { config } from './config'
 import * as redis from 'redis'
@@ -16,18 +16,28 @@ const ascoltatore = {
 
 const settings = {
   port: process.env.NODE_PORT || 1337,
-  backend: ascoltatore
+  backend: ascoltatore,
+  persistence: {
+    factory: mosca.persistence.Redis,
+    port: config.redis.port,
+    host: config.redis.host
+  }
 }
 
 const server = new Server(settings)
 const vegeta = server.getBroker()
 
-vegeta.on('published', (packet, client) => {
-  if (packet.topic.indexOf('$SYS') === 0) return
-  debugger;
-  console.log('Client -   ', client.id.toString(), ' Payload - ' , packet.payload.toString(), 'on topic', packet.topic)
-})
-
 vegeta.on('ready', () => {
   console.log('MQTT Broker listening on port - ', process.env.NODE_PORT || 1337)
+})
+
+vegeta.on('clientConnected', (client) => {
+  console.log('Client connected with id - ' + client.id)
+})
+
+vegeta.on('published', (packet, client) => {
+  if (packet.topic.indexOf('$SYS') === 0) return
+  console.log("TOPIC / CHANNEL -  " + packet.topic)
+  console.log("Message received from - " + client.id.toString() + " || Payload - " + packet.payload.toString())
+  console.log('Broker Relaying ! ', packet.payload.toString(), 'on topic', packet.topic)
 })
