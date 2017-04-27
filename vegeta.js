@@ -4,9 +4,6 @@ import Server from './bin/server'
 import { config } from './config'
 import * as redis from 'redis'
 
-console.log(config)
-
-
 const ascoltatore = {
   type: 'redis',
   redis: redis,
@@ -37,7 +34,7 @@ vegeta.on('clientConnected', (client) => {
 
 vegeta.on('published', (packet, client) => {
   if (packet.topic.indexOf('$SYS') === 0) return
-  console.log("TOPIC / CHANNEL -  " + packet.topic)
-  console.log("Message received from - " + client.id.toString() + " || Payload - " + packet.payload.toString())
+  console.log('TOPIC / CHANNEL -  ' + packet.topic)
+  console.log('Message received from - ' + client.id.toString() + ' || Payload - ' + packet.payload.toString())
   console.log('Broker Relaying ! ', packet.payload.toString(), 'on topic', packet.topic)
 })
