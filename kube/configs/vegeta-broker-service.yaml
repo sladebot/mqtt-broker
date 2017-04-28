@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: vegeta
+    tier: frontend
+  name: vegeta-broker
+spec:
+  ports:
+  - port: 1337
+    protocol: TCP
+    targetPort: 1337
+  selector:
+    app: vegeta
+    tier: frontend
+  type: NodePort
+status:
+  loadBalancer: {}
