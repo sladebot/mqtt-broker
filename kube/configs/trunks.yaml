@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: trunks
+    tier: client
+  name: trunks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trunks
+      tier: client
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: trunks
+        tier: client
+    spec:
+      containers:
+      - env:
+        - name: VEGETA_HOST
+          value: a7e6d1b7c2ba811e7bfdd12dff68689d-276050464.us-east-1.elb.amazonaws.com 
+        image: registry.hub.docker.com/souranilsbu/trunks:latest
+        name: trunks
+        resources: {}
+status: {}
