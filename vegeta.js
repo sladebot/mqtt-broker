@@ -3,6 +3,7 @@ import * as mosca from 'mosca'
 import Server from './bin/server'
 import { config } from './config'
 import * as redis from 'redis'
+import { getASCIIofString } from './util'
 
 const ascoltatore = {
   type: 'redis',
@@ -25,11 +26,9 @@ const server = new Server(settings)
 const vegeta = server.getBroker()
 
 
-function ascii (a) { return a.charCodeAt(0); }
 
-function getASCIIofString(string) {
-  return string.split("").map(ascii).reduce((a, b) => a + b, 0)
-}
+
+
 
 vegeta.on('ready', () => {
   console.log('MQTT Broker listening on port - ', process.env.NODE_PORT || 1337)
