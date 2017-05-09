@@ -25,11 +25,6 @@ const settings = {
 const server = new Server(settings)
 const vegeta = server.getBroker()
 
-
-
-
-
-
 vegeta.on('ready', () => {
   console.log('MQTT Broker listening on port - ', process.env.NODE_PORT || 1337)
 })
@@ -40,7 +35,7 @@ vegeta.on('clientConnected', (client) => {
 
 vegeta.on('published', (packet, client) => {
   if (packet.topic.indexOf('$SYS') === 0) return
-  let cpuCalculate = getASCIIofString(packet.payload.toString()) + Math.floor(Math.random()*100)
+  let cpuCalculate = getASCIIofString(packet.payload.toString()) + Math.floor(Math.random() * 100)
   console.log('CPU Calculated sum of ASCII of string - ' + cpuCalculate)
   console.log('TOPIC / CHANNEL -  ' + packet.topic)
   console.log('Message received from - ' + client.id.toString() + ' || Payload - ' + packet.payload.toString())
