@@ -13,7 +13,7 @@ const ascoltatore = {
 }
 
 const settings = {
-  port: process.env.NODE_PORT || 1337,
+  port: process.env.NODE_PORT || 1883,
   backend: ascoltatore,
   persistence: {
     factory: mosca.persistence.Redis,

@@ -21,7 +21,7 @@ WORKDIR /app
 
 RUN node_modules/gulp/bin/gulp.js
 
-EXPOSE 1337
+EXPOSE 1883
 
 ENTRYPOINT ["bash", "-c"]
 CMD ["node dist/vegeta.js"]
