@@ -27,6 +27,6 @@ spec:
         image: registry.hub.docker.com/souranilsbu/vegeta
         name: vegeta-broker
         ports:
-        - containerPort: 1337
+        - containerPort: 1883
         resources: {}
 status: {}
