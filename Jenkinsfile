@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        sh '''pwd 
-ls 
-node -v
-/usr/local/bin/npm test'''
+        sh '/usr/local/bin/npm test'
       }
     }
   }
