@@ -1,10 +1,9 @@
 'use strict'
 import * as mosca from 'mosca'
-import express from 'express'
-import { Router } from 'express'
+import express, { Router } from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
-import flash from 'express-flash'
+import helmet from 'helmet'
 import gzip from 'compression'
 import winston from 'winston'
 import BrokerServer from './bin/broker'
@@ -26,7 +25,6 @@ const logger = new winston.Logger({
   exitOnError: false
 })
 
-
 const ascoltatore = {
   type: 'redis',
   redis: redis,
@@ -47,8 +45,6 @@ const settings = {
 const mqttBrokerServer = new BrokerServer(settings)
 const vegeta = mqttBrokerServer.getBroker()
 
-
-
 /**
  * HTTP Server for UI & Routes
  */
@@ -65,8 +61,7 @@ expressApp.use(bodyParser.urlencoded({
   extended: true
 }))
 
-
-expressApp.set('views', path.join(__dirname, '/views'));
+expressApp.set('views', path.join(__dirname, '/views'))
 expressApp.use(express.static(path.join(process.cwd(), 'public')))
 expressApp.set('view engine', 'ejs')
 /**
@@ -82,9 +77,7 @@ expressApp.get('/', (req, res) => {
 })
 expressApp.use('/api/v1', router)
 
-
 expressApp.set('port', (process.env.PORT || 3000))
-
 
 expressApp.listen(expressApp.get('port'), () => {
   logger.info('--------------------------')
@@ -96,7 +89,6 @@ expressApp.listen(expressApp.get('port'), () => {
   logger.info('--------------------------')
   logger.info('--------------------------')
 })
-
 
 /**
  * MQTT BROKER

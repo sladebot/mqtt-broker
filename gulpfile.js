@@ -2,7 +2,6 @@
 
 const gulp = require('gulp')
 const babel = require('gulp-babel')
-const copy = require('gulp-copy')
 
 gulp.task('compile', () => {
   return gulp.src(['./**/*.js', '!./node_modules{,/**}', '!./gulpfile.js', '!./test/**/*'])
