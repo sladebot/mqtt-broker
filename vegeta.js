@@ -68,14 +68,22 @@ expressApp.set('view engine', 'ejs')
  * ROUTES
  */
 
-router.get('/home', (req, res) => {
-  res.render('home.ejs')
+// router.get('/dash', (req, res) => {
+//   res.render('index.ejs', {
+//     page: 'dash'
+//   })
+// })
+
+router.get('/home/new', (req, res) => {
+  res.render('pages/home_new.ejs')
 })
 
 expressApp.get('/', (req, res) => {
-  res.render('index.ejs')
+  res.render('index.ejs', {
+    page: 'dash'
+  })
 })
-expressApp.use('/api/v1', router)
+expressApp.use(router)
 
 expressApp.set('port', (process.env.PORT || 3000))
 
