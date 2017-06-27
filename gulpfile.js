@@ -32,7 +32,6 @@ gulp.task('compile-js', () => {
   .pipe(gulp.dest('./dist/public/js'))
 })
 
-
 gulp.task('copy-views', () => {
   return gulp.src([
     './app/views/**/*.ejs'

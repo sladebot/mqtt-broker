@@ -1,11 +1,15 @@
 'use strict'
 import * as mosca from 'mosca'
+import flash from 'express-flash'
 import express, { Router } from 'express'
+import session from 'express-session'
 import bodyParser from 'body-parser'
 import path from 'path'
 import helmet from 'helmet'
 import gzip from 'compression'
 import winston from 'winston'
+import mongoose from 'mongoose'
+import Models from './app/models'
 import BrokerServer from './bin/broker'
 import { config } from './config'
 import * as redis from 'redis'
@@ -45,6 +49,11 @@ const settings = {
 const mqttBrokerServer = new BrokerServer(settings)
 const vegeta = mqttBrokerServer.getBroker()
 
+const mongoURI = `mongodb://${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.collection}`
+logger.debug(`Connecting to ${mongoURI}`)
+
+mongoose.connect(mongoURI)
+
 /**
  * HTTP Server for UI & Routes
  */
@@ -60,28 +69,51 @@ expressApp.use(bodyParser.json())
 expressApp.use(bodyParser.urlencoded({
   extended: true
 }))
+expressApp.use(session({
+  secret: `iwjfnijenf8723ur2u3rb32r837ur2`,
+  cookie: { secure: false }
+}))
+expressApp.use(flash())
 
 expressApp.set('views', path.join(__dirname, './app/views'))
 expressApp.use(express.static(path.join(__dirname, './public')))
 expressApp.set('view engine', 'ejs')
+
+/**
+ * Models
+ */
+
 /**
  * ROUTES
  */
 
-// router.get('/dash', (req, res) => {
-//   res.render('index.ejs', {
-//     page: 'dash'
-//   })
-// })
+router.get('/dash', (req, res) => {
+  res.render('index.ejs', {
+    page: 'dash'
+  })
+})
 
 router.get('/home/new', (req, res) => {
   res.render('pages/home_new.ejs')
 })
 
-expressApp.get('/', (req, res) => {
-  res.render('index.ejs', {
-    page: 'dash'
+router.post(`/home/new`, (req, res) => {
+  const { home_title } = req.body
+  let home = new Models.Home({
+    title: home_title
   })
+  home.save((err, data) => {
+    if (err) {
+      req.flash('error', 'Something went wrong')
+    } else {
+      req.flash('info', 'Smart Home created successfully')
+    }
+    res.redirect('/')
+  })
+})
+
+expressApp.get('/', (req, res) => {
+  res.render('pages/dash.ejs')
 })
 expressApp.use(router)
 
