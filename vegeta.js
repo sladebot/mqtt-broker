@@ -61,8 +61,8 @@ expressApp.use(bodyParser.urlencoded({
   extended: true
 }))
 
-expressApp.set('views', path.join(__dirname, '/views'))
-expressApp.use(express.static(path.join(process.cwd(), 'public')))
+expressApp.set('views', path.join(__dirname, './app/views'))
+expressApp.use(express.static(path.join(__dirname, './public')))
 expressApp.set('view engine', 'ejs')
 /**
  * ROUTES
