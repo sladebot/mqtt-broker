@@ -2,7 +2,7 @@
 
 import * as mosca from 'mosca'
 
-export default class Server {
+export default class Broker {
   constructor (settings) {
     let done = () => {}
     this.settings = settings
