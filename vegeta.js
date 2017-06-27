@@ -26,7 +26,7 @@ const server = new Server(settings)
 const vegeta = server.getBroker()
 
 vegeta.on('ready', () => {
-  console.log('MQTT Broker listening on port - ', process.env.NODE_PORT || 1337)
+  console.log('MQTT Broker listening on port - ', process.env.NODE_PORT || 1883)
 })
 
 vegeta.on('clientConnected', (client) => {
