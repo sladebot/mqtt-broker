@@ -13,6 +13,11 @@ const ascoltatore = {
 }
 
 const settings = {
+  http: {
+    port: 1337,
+    bundle: true,
+    static: './'
+  },
   port: process.env.NODE_PORT || 1883,
   backend: ascoltatore,
   persistence: {
