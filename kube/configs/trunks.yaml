@@ -28,7 +28,7 @@ spec:
       containers:
       - env:
         - name: VEGETA_HOST
-          value: 104.197.18.93
+          value: 104.196.9.226 
         - name: SUBSCRIBER
           value: 'false'
         - name: PUBLISHER

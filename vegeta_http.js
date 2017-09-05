@@ -34,8 +34,8 @@ bayeux.on('unsubscribe', (clientId, channel) => {
   console.log(`Client ${clientId} disconnected on channel - ${channel}`)
 })
 
-bayeux.getClient().subscribe('/messages', (msg) => {
-  console.log('Vegeta | Got message - ' + JSON.stringify(msg.text))
-})
+// bayeux.getClient().subscribe('/messages', (msg) => {
+//   console.log('Vegeta | Got message - ' + JSON.stringify(msg.text))
+// })
 
 console.log(`HTTP Broker listening on port - ${port}`)

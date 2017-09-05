@@ -19,6 +19,7 @@
   "main": "mqtt.js",
   "scripts": {
     "start": "rm -rf dist/ && ./node_modules/.bin/gulp && node dist/vegeta.js",
+    "start_http": "rm -rf dist/ && ./node_modules/.bin/gulp && node dist/vegeta_http.js",
     "test": "node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --bail --compilers js:babel-core/register",
     "pretest": "standard | snazzy",
     "ci": "npm run test && codecov"

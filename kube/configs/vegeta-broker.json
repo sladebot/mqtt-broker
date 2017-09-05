@@ -10,7 +10,7 @@
         }
     },
     "spec": {
-        "replicas": 2,
+        "replicas": 1,
         "selector": {
             "matchLabels": {
                 "app": "vegeta",
@@ -29,7 +29,7 @@
                 "containers": [
                     {
                         "name": "vegeta-broker",
-                        "image": "registry.hub.docker.com/souranilsbu/vegeta",
+                        "image": "registry.hub.docker.com/souranilsbu/vegeta:mqtt--cache",
                         "ports": [
                             {
                                 "containerPort": 1883
