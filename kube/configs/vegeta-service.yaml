@@ -8,12 +8,13 @@ metadata:
   name: vegeta-broker
 spec:
   ports:
-  - port: 1337
+  - port: 1883
     protocol: TCP
-    targetPort: 1337
+    targetPort: 1883
   selector:
     app: vegeta
     tier: frontend
   type: NodePort
- status:
-  loadBalancer: {}
+  status:
+    loadBalancer: {}
+

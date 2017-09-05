@@ -32,7 +32,7 @@
                         "image": "registry.hub.docker.com/souranilsbu/vegeta",
                         "ports": [
                             {
-                                "containerPort": 1337
+                                "containerPort": 1883
                             }
                         ],
                         "env": [

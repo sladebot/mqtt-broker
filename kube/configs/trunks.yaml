@@ -12,7 +12,12 @@ spec:
     matchLabels:
       app: trunks
       tier: client
-  strategy: {}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 
+      maxUnavailable: 0 
+  minReadySeconds: 5
   template:
     metadata:
       creationTimestamp: null
@@ -23,8 +28,15 @@ spec:
       containers:
       - env:
         - name: VEGETA_HOST
-          value: a9481c0e0450411e7bfdd12dff68689d-1028345378.us-east-1.elb.amazonaws.com 
-        image: registry.hub.docker.com/souranilsbu/trunks:latest
+          value: 104.197.18.93
+        - name: SUBSCRIBER
+          value: 'false'
+        - name: PUBLISHER
+          value: 'true'
+        - name: CHANNEL
+          value: photosensor
+        image: registry.hub.docker.com/souranilsbu/trunks:mqtt-2.0
+        imagePullPolicy: Always
         name: trunks
         resources: {}
 status: {}
