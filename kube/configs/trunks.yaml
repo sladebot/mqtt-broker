@@ -28,14 +28,14 @@ spec:
       containers:
       - env:
         - name: VEGETA_HOST
-          value: 104.196.9.226 
+          value: 35.203.169.140 
         - name: SUBSCRIBER
           value: 'false'
         - name: PUBLISHER
           value: 'true'
         - name: CHANNEL
           value: photosensor
-        image: registry.hub.docker.com/souranilsbu/trunks:mqtt-2.0
+        image: registry.hub.docker.com/souranilsbu/trunks:mqtt-2.1
         imagePullPolicy: Always
         name: trunks
         resources: {}

@@ -29,7 +29,7 @@
                 "containers": [
                     {
                         "name": "vegeta-broker",
-                        "image": "registry.hub.docker.com/souranilsbu/vegeta:mqtt--cache",
+                        "image": "registry.hub.docker.com/souranilsbu/vegeta:mqtt--no-cache",
                         "ports": [
                             {
                                 "containerPort": 1883

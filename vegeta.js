@@ -1,5 +1,6 @@
 'use strict'
 import * as mosca from 'mosca'
+import fs from 'fs'
 import Server from './bin/server'
 import { config } from './config'
 import * as redis from 'redis'
@@ -9,7 +10,8 @@ const ascoltatore = {
   type: 'redis',
   redis: redis,
   port: config.redis.port,
-  host: config.redis.host
+  host: config.redis.host,
+  return_buffers: true
 }
 
 const settings = {
@@ -17,6 +19,10 @@ const settings = {
     port: 1337,
     bundle: true,
     static: './'
+  },
+  stats: true,
+  logger: {
+    level: 'info'
   },
   port: process.env.NODE_PORT || 1883,
   backend: ascoltatore,
