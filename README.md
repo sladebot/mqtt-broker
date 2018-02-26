@@ -1,7 +1,9 @@
 ![Build Status](https://travis-ci.com/sladebot/vegeta.svg?token=zxUVizLppNAh1hvbquCT&branch=master)
 
+#### MQTT Broker
 
-A broker which uses MQTT as the protocol to connect to any publisher / subscriber that connects to its endpoint. 
+
+A broker which uses MQTT as the protocol to connect to any publisher / subscriber that connects to its endpoint. It also uses redis as a backend cache store, so it will need redis running somewhere either in the same cluster or provide a redis endpoint it can connect to. While we can support MongoDB / Kafka that work is not just done yet, PRs welcome !
 
 ### How to run ?
 
